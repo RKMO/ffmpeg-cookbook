@@ -1,8 +1,7 @@
 include_recipe "ark"
 
-package "yasm" do
-  action :install
-end
+package "yasm"
+package "clang"
 
 ark "ffmpeg" do
   url node[:ffmpeg][:source_url]
