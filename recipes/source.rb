@@ -2,6 +2,7 @@ include_recipe "ark"
 
 package "yasm"
 package "clang"
+package "libass"
 
 ark "ffmpeg" do
   url node[:ffmpeg][:source_url]
