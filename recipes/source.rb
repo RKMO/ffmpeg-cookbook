@@ -1,5 +1,9 @@
 include_recipe "ark"
 
+template '/etc/apt/sources.list.d/libfaac-dev.list' do
+  notifies :run, 'execute[apt-get update]', :immediately
+end
+
 node[:ffmpeg][:packages].each do |pkg|
   package pkg
 end
