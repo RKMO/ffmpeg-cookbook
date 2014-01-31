@@ -1,8 +1,8 @@
 include_recipe "ark"
 
-package "yasm"
-package "clang"
-package "libass"
+node[:ffmpeg][:packages].each do |pkg|
+  package pkg
+end
 
 ark "ffmpeg" do
   url node[:ffmpeg][:source_url]
