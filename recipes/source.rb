@@ -10,7 +10,7 @@ directory "#{node[:ffmpeg][:source_prefix]}/ffmpeg-#{node[:ffmpeg][:version]}" d
     action :delete
 end
 
-template "/etc/apt/source.list.d/faac.list" do
+template "/etc/apt/sources.list.d/faac.list" do
     source "libfaac-dev.list.erb"
     notifies :run, resources(:execute => "apt-get update"), :immediately
 end
