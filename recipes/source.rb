@@ -51,7 +51,7 @@ bash "install opencore-amr" do
         wget http://downloads.sourceforge.net/project/opencore-amr/vo-amrwbenc/vo-amrwbenc-0.1.1.tar.gz
         tar zxvf vo-amrwbenc-0.1.1.tar.gz
         cd vo-amrwbenc-0.1.1
-        ./configure --disable-shared
+        ./configure
         make
         sudo checkinstall --pkgname="libopencore-amr" --pkgversion="0.1.1" --backup=no --fstrans=no --install=yes --default
   EOH
@@ -64,7 +64,7 @@ bash "install libtheora" do
         wget http://downloads.xiph.org/releases/theora/libtheora-1.1.1.tar.bz2
         tar jxvf libtheora-1.1.1.tar.bz2
         cd libtheora-1.1.1
-        ./configure --disable-shared
+        ./configure
         make
         sudo checkinstall --pkgname=libtheora --pkgversion "1.1.1" --backup=no --fstrans=no --install=yes --default
   EOH
