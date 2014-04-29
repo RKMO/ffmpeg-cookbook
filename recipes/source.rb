@@ -1,5 +1,4 @@
 include_recipe "ark"
-include_recipe "yasm"
 
 node[:ffmpeg][:packages].each do |pkg|
   package pkg
