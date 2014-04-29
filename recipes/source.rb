@@ -39,7 +39,7 @@ bash "install x264" do
     cd x264-snapshot*
     ./configure --enable-static
     make
-    sudo checkinstall --pkgname=x264 --pkgversion="0.142" --backup=no --default --deldoc=yes
+    sudo checkinstall --pkgname=x264 --pkgversion="0.142" --backup=no --install=yes --default --deldoc=yes
   EOH
 end
 
@@ -92,7 +92,7 @@ bash "install libvpx" do
         cd libvpx-v1.3.0
         ./configure --disable-examples
         make
-        sudo checkinstall --pkgname=libvpx --pkgversion="1.3.0" --backup=no --default --deldoc=yes
+        sudo checkinstall --pkgname=libvpx --pkgversion="1.3.0" --backup=no --default --install=yes --deldoc=yes
   EOH
 end
 
