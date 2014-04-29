@@ -1,5 +1,10 @@
 include_recipe "ark"
 
+template "/etc/apt/sources.list.d/faac.list" do
+    source "libfaac-dev.list.erb"
+    notifies :run, resources(:execute => "apt-get update"), :immediately
+end
+
 node[:ffmpeg][:packages].each do |pkg|
   package pkg
 end
@@ -7,11 +12,6 @@ end
 directory "#{node[:ffmpeg][:source_prefix]}/ffmpeg-#{node[:ffmpeg][:version]}" do
     recursive true
     action :delete
-end
-
-template "/etc/apt/sources.list.d/faac.list" do
-    source "libfaac-dev.list.erb"
-    notifies :run, resources(:execute => "apt-get update"), :immediately
 end
 
 package "faac"
