@@ -84,6 +84,21 @@ bash "install libtheora" do
   EOH
 end
 
+bash "install libvpx" do
+  user "root"
+  cwd "/opt/ffmpeg_sources"
+  code <<-EOH
+        wget http://webm.googlecode.com/files/libvpx-v1.3.0.tar.bz2
+        tar jxvf libvpx-v1.3.0.tar.bz2
+        cd libvpx-v1.3.0
+        ./configure --disable-examples
+        make
+        make install
+        make clean
+  EOH
+end
+
+
 ark "ffmpeg" do
   url node[:ffmpeg][:source_url]
   prefix_root node[:ffmpeg][:source_prefix]
