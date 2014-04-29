@@ -1,5 +1,9 @@
 include_recipe "ark"
-include_recipe "yasm"
+
+template "/etc/apt/sources.list.d/faac.list" do
+    source "libfaac-dev.list.erb"
+    notifies :run, resources(:execute => "apt-get update"), :immediately
+end
 
 node[:ffmpeg][:packages].each do |pkg|
   package pkg
@@ -8,11 +12,6 @@ end
 directory "#{node[:ffmpeg][:source_prefix]}/ffmpeg-#{node[:ffmpeg][:version]}" do
     recursive true
     action :delete
-end
-
-template "/etc/apt/sources.list.d/faac.list" do
-    source "libfaac-dev.list.erb"
-    notifies :run, resources(:execute => "apt-get update"), :immediately
 end
 
 package "faac"
@@ -30,6 +29,20 @@ bash "install yasm" do
       sudo checkinstall --pkgname=yasm --pkgversion="1.1.0" --backup=no --deldoc=yes --default
   EOH
 end
+
+bash "install x264" do
+  user "root"
+  cwd "/opt/ffmpeg_sources"
+  code <<-EOH
+    wget http://download.videolan.org/pub/x264/snapshots/last_x264.tar.bz2
+    tar xjvf last_x264.tar.bz2
+    cd x264-snapshot*
+    ./configure --enable-shared
+    make
+    sudo checkinstall --pkgname=x264 --pkgversion="0.142" --backup=no --install=yes --default --deldoc=yes
+  EOH
+end
+
 
 bash "install lame" do
   user "root"
