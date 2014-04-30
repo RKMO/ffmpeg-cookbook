@@ -37,7 +37,7 @@ bash "install x264" do
     wget http://download.videolan.org/pub/x264/snapshots/last_x264.tar.bz2
     tar xjvf last_x264.tar.bz2
     cd x264-snapshot*
-    ./configure --enable-static
+    ./configure --enable-shared
     make
     sudo checkinstall --pkgname=x264 --pkgversion="0.142" --backup=no --install=yes --default --deldoc=yes
   EOH
