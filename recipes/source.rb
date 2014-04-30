@@ -37,7 +37,7 @@ bash "install x264" do
     wget http://download.videolan.org/pub/x264/snapshots/last_x264.tar.bz2
     tar xjvf last_x264.tar.bz2
     cd x264-snapshot*
-    ./configure --enable-shared
+    ./configure
     make
     sudo checkinstall --pkgname=x264 --pkgversion="0.142" --backup=no --install=yes --default --deldoc=yes
   EOH
@@ -51,7 +51,7 @@ bash "install lame" do
         wget http://downloads.sourceforge.net/project/lame/lame/3.99/lame-3.99.tar.gz
         tar xzvf lame-3.99.tar.gz
         cd lame-3.99
-        ./configure --enable-shared
+        ./configure
         make
         sudo checkinstall --pkgname=lame-ffmpeg --pkgversion="3.99" --backup=no --default --deldoc=yes
   EOH
@@ -64,7 +64,7 @@ bash "install opencore-amr" do
         wget http://downloads.sourceforge.net/project/opencore-amr/vo-amrwbenc/vo-amrwbenc-0.1.1.tar.gz
         tar zxvf vo-amrwbenc-0.1.1.tar.gz
         cd vo-amrwbenc-0.1.1
-        ./configure --enable-shared
+        ./configure
         make
         sudo checkinstall --pkgname="libopencore-amr" --pkgversion="0.1.1" --backup=no --fstrans=no --install=yes --default
   EOH
@@ -77,7 +77,7 @@ bash "install libtheora" do
         wget http://downloads.xiph.org/releases/theora/libtheora-1.1.1.tar.bz2
         tar jxvf libtheora-1.1.1.tar.bz2
         cd libtheora-1.1.1
-        ./configure --enable-shared
+        ./configure
         make
         sudo checkinstall --pkgname=libtheora --pkgversion "1.1.1" --backup=no --fstrans=no --install=yes --default
   EOH
@@ -90,7 +90,7 @@ bash "install libvpx" do
         wget http://webm.googlecode.com/files/libvpx-v1.3.0.tar.bz2
         tar jxvf libvpx-v1.3.0.tar.bz2
         cd libvpx-v1.3.0
-        ./configure --enable-shared --disable-examples
+        ./configure  --disable-examples
         make
         sudo checkinstall --pkgname=libvpx --pkgversion="1.3.0" --backup=no --default --install=yes --deldoc=yes
   EOH
