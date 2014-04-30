@@ -1,6 +1,6 @@
 name              "ffmpeg"
 maintainer        "Sergey Khaladzinski"
-version           "0.0.24"
+version           "0.0.25"
 
 depends "build-essential"
 depends "ark", "~> 0.3"
